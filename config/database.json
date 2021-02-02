@@ -1,8 +1,0 @@
-{
-    "Development": {
-        "JDBCDriver": "com.postgresql.jdbc.Driver",
-        "DBURL": "jdbc:postgresql://ec2-18-203-62-227.eu-west-1.compute.amazonaws.com:5432/d2fhf8o33nlik",
-        "Username": "mvmfmszoaqdtsn",
-        "Password": "867d4153b7ea5486a693c52c4e95223fc1f6ee9f34ff2495ba982d3371c4bf1e"
-    }
-}
