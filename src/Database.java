@@ -2,12 +2,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
-
+import java.sql.DriverManager;
 import org.json.JSONObject;
 
 public class Database {
     // Database config
-    private String file;
     private JSONObject config;
 
     // Connection
@@ -18,8 +17,13 @@ public class Database {
             String jsonString = this.getFileAsString(file);
             this.parseJsonString(jsonString);
 
-            System.out.println("Config: " + this.config.getJSONObject("Development").getString("Username"));
+            // Create connection instance
             Class.forName(this.config.getJSONObject("Development").getString("JDBCDriver"));
+            this.conn = DriverManager.getConnection(
+                this.config.getJSONObject("Development").getString("DBURL"),
+                this.config.getJSONObject("Development").getString("Username"), 
+                this.config.getJSONObject("Development").getString("Password")
+            );
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
